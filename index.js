@@ -227,4 +227,23 @@ client.on('interactionCreate', (interaction) => {
     }
 });
 
-client.login(config.token);
+
+
+function getReputationStars(reputationPercent) {
+    let reputCalc = Math.round(reputationPercent / 0.2);
+    let reputDemiCalc = reputationPercent % 0.2;
+
+    let starsStr ='';
+
+    for (let i = 0; i < reputCalc; i++) {
+        starsStr += ':star:';
+    }
+
+    if (reputDemiCalc !== 0 && reputCalc < 5) {
+        starsStr += '<:half_star:906229706498666546>';
+    }
+
+    return starStr;
+}
+
+client.login(process.env.TOKEN)
